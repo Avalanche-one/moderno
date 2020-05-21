@@ -20,6 +20,7 @@ gulp.task('sass', function(){
 
 gulp.task('style', function(){
     return gulp.src([
+        'node_modules/rateyo/src/jquery.rateyo.css',
         'node_modules/magnific-popup/dist/magnific-popup.css',
         'node_modules/slick-carousel/slick/slick.css',
         'node_modules/normalize.css/normalize.css'
@@ -33,7 +34,8 @@ gulp.task('script', function(){
     return gulp.src([
         'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
         'node_modules/slick-carousel/slick/slick.js',
-        'node_modules/mixitup/dist/mixitup.js'
+        'node_modules/mixitup/dist/mixitup.js',
+        'node_modules/rateyo/src/jquery.rateyo.js'
     ])
             .pipe(concat('libs.min.js'))
             .pipe(uglify())
@@ -64,4 +66,4 @@ gulp.task('watch', function(){
     gulp.watch('app/js/*.js', gulp.parallel('js'));
 });
 
-gulp.task('default', gulp.parallel('watch', 'browser-sync', 'sass', 'script'));
+gulp.task('default', gulp.parallel('watch', 'browser-sync', 'sass', 'script', 'style'));
